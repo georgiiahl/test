@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import {
   CollapsibleContainer,
   CollapsibleContent,
+  CollapsibleHeader,
   CollapsibleTitle,
+  CollapsibleValue
 } from "../styles/CollapsibleStyles";
 
 interface CollapsibleProps {
@@ -17,9 +19,12 @@ const Collapsible: React.FC<CollapsibleProps> = ({ title, content }) => {
 
   return (
     <CollapsibleContainer>
-      <CollapsibleTitle onClick={toggleOpen}>{title}</CollapsibleTitle>
+      <CollapsibleHeader onClick={toggleOpen}  isOpen={isOpen}>
+        <CollapsibleTitle>{title}</CollapsibleTitle>
+        <CollapsibleValue>2 sec</CollapsibleValue>
+        </CollapsibleHeader>
       <CollapsibleContent isOpen={isOpen}>
-        <p>{content}</p>
+        {content}
       </CollapsibleContent>
     </CollapsibleContainer>
   );

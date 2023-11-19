@@ -1,0 +1,76 @@
+@font-face {
+    font-family: "Regular";
+    font-style: normal;
+    font-weight: 400;
+    src: local("Roboto"),
+         url("../fonts/Inter-Regular.ttf") format("ttf")
+  }
+
+  @font-face {
+    font-family: "Black";
+    font-style: normal;
+    font-weight: 400;
+    src: local("Roboto"),
+         url("../fonts/Inter-Black.ttf") format("ttf")
+  }
+
+  @font-face {
+    font-family: "Bold";
+    font-style: normal;
+    font-weight: 400;
+    src: local("Roboto"),
+         url("../fonts/Inter-Bold.ttf") format("ttf")
+  }
+
+  @font-face {
+    font-family: "ExtraBold";
+    font-style: normal;
+    font-weight: 400;
+    src: local("Roboto"),
+         url("../fonts/Inter-ExtraBold.ttf") format("ttf")
+  }
+
+  @font-face {
+    font-family: "ExtraLight";
+    font-style: normal;
+    font-weight: 400;
+    src: local("Roboto"),
+         url("../fonts/Inter-ExtraLight.ttf") format("ttf")
+  }
+
+  @font-face {
+    font-family: "Light";
+    font-style: normal;
+    font-weight: 400;
+    src: local("Roboto"),
+         url("../fonts/Inter-Light.ttf") format("ttf")
+  }
+
+  @font-face {
+    font-family: "Medium";
+    font-style: normal;
+    font-weight: 400;
+    src: local("Roboto"),
+         url("../fonts/Inter-Medium.ttf") format("ttf")
+  }
+
+  @font-face {
+    font-family: "SemiBold";
+    font-style: normal;
+    font-weight: 400;
+    src: local("Roboto"),
+         url("../fonts/Inter-SemiBold.ttf") format("ttf")
+  }
+
+  @font-face {
+    font-family: "Thin";
+    font-style: normal;
+    font-weight: 400;
+    src: local("Roboto"),
+         url("../fonts/Inter-Thin.ttf") format("ttf")
+  }
+
+ body {
+     margin: 0;
+     font-family: 'Inter', sans-serif;
+   }

@@ -3,9 +3,26 @@ import styled from "styled-components";
 import { ApiResponse } from "../types";
 import Slider from "./Slider";
 import Collapsible from "./Collapsible";
+import {
+  Layout,
+  SliderContainer,
+  SliderText,
+  SliderTitle,
+  SliderDescription,
+  EmissionInfo,
+  ResultsHeader,
+  CardsContainer,
+  Card,
+  CardTitle,
+  CardValue,
+  CardDescription,
+  ContactButton,
+  ButtonContainer,
+  Collapsibles
+} from "../styles/ResultPhase";
 
 const Container = styled.div`
-  padding: 20px;
+background: #e9e9e9;
 `;
 
 const Header = styled.h2`
@@ -13,38 +30,7 @@ const Header = styled.h2`
   margin-bottom: 20px;
 `;
 
-const Layout = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 20px;
-`;
 
-const EmissionsInfo = styled.div`
-  padding: 15px;
-  background-color: #f2f2f2;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  flex-basis: 40%;
-  text-align: center;
-`;
-const Card = styled.div`
-  padding: 10px;
-  margin: 10px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  text-align: center;
-`;
-
-const CardTitle = styled.h4`
-  margin-bottom: 5px;
-`;
-
-const CardValue = styled.div`
-  font-size: 20px;
-  font-weight: bold;
-`;
 
 const AuditScoresRow = styled.div`
   display: flex;
@@ -83,41 +69,51 @@ const ResultPhase: React.FC<ResultPhaseProps> = ({ data }) => {
   };
 
   const renderEmissionsInfo = (emissions: number) => (
-    <EmissionsInfo>
-      <div>Total Emissions: {emissions}</div>
-    </EmissionsInfo>
+    <EmissionInfo>
+      Total Emissions:<br/> {emissions}
+    </EmissionInfo>
   );
 
   const renderAuditScoreCard = (title: string, score: number) => (
     <Card key={title}>
-      <CardTitle>{title}</CardTitle>
+      <CardTitle>{'Site overall sustainability score'}</CardTitle>
       <CardValue>{score}</CardValue>
+      <CardDescription>Lorem ipsum dolor sit amet, consectetur adipiscing elit, lorem ipsum dolor sit amet, consectetur adipiscing elit...</CardDescription>
     </Card>
   );
 
   const renderAuditScores = () => {
     const scores = data.apiResponse.individualAuditScores;
     return (
-      <AuditScoresRow>
+      <CardsContainer>
         {Object.entries(scores).map(([key, value]) =>
           renderAuditScoreCard(key, value)
         )}
-      </AuditScoresRow>
+      </CardsContainer>
     );
   };
 
   return (
     <Container>
-      <Header>{data.greeting}</Header>
       <Layout>
-        <div>
-          <label>Website Traffic (Number of Visits):</label>
-          {renderSlider()}
-        </div>
-        {renderEmissionsInfo(data.apiResponse.emissions * visits)}
-      </Layout>
+        <ResultsHeader>
+          <SliderContainer>
+              <SliderText>
+                <SliderTitle>Monthly sessions</SliderTitle>
+                <SliderDescription>You can choose the monthly sessions and the emissions would change accordingly</SliderDescription>
+              </SliderText>
+              {renderSlider()}
+            </SliderContainer>
+            {renderEmissionsInfo(data.apiResponse.emissions * visits)}
+        </ResultsHeader>
+      
       {renderAuditScores()}
-      <div>{renderAuditCollapsibles()}</div>
+      <ButtonContainer>
+        <ContactButton>Contact us</ContactButton>
+      </ButtonContainer>
+      </Layout>
+
+      <Collapsibles>{renderAuditCollapsibles()}</Collapsibles>
     </Container>
   );
 };
